@@ -1,0 +1,226 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: 35 33% 95%;
+  --foreground: 0 0% 11%;
+  --card: 35 33% 95%;
+  --card-foreground: 0 0% 11%;
+  --popover: 35 33% 95%;
+  --popover-foreground: 0 0% 11%;
+  --primary: 11 66% 62%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 35 20% 88%;
+  --secondary-foreground: 0 0% 11%;
+  --muted: 35 20% 88%;
+  --muted-foreground: 0 0% 40%;
+  --accent: 11 66% 62%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 35 15% 85%;
+  --input: 35 15% 85%;
+  --ring: 11 66% 62%;
+  --radius: 0.375rem;
+}
+
+.dark {
+  --background: 0 0% 7%;
+  --foreground: 0 0% 92%;
+  --card: 0 0% 10%;
+  --card-foreground: 0 0% 92%;
+  --popover: 0 0% 10%;
+  --popover-foreground: 0 0% 92%;
+  --primary: 11 66% 62%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 0 0% 15%;
+  --secondary-foreground: 0 0% 92%;
+  --muted: 0 0% 15%;
+  --muted-foreground: 0 0% 60%;
+  --accent: 11 66% 62%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 0 0% 20%;
+  --input: 0 0% 20%;
+  --ring: 11 66% 62%;
+}
+
+@theme inline {
+  --font-sans: 'Inter', 'Inter Fallback', system-ui, sans-serif;
+  --font-serif: 'EB Garamond', 'EB Garamond Fallback', Georgia, serif;
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+}
+
+::selection {
+  background-color: hsl(11 66% 62% / 0.2);
+}
+/* =========================
+   ACCESSIBILITY MODES
+========================= */
+
+/* Dyslexic mode */
+html.a11y-dyslexic body,
+html.a11y-dyslexic .font-serif,
+html.a11y-dyslexic .font-sans,
+html.a11y-dyslexic input,
+html.a11y-dyslexic textarea,
+html.a11y-dyslexic button,
+html.a11y-dyslexic select,
+html.a11y-dyslexic p,
+html.a11y-dyslexic span,
+html.a11y-dyslexic a,
+html.a11y-dyslexic li,
+html.a11y-dyslexic h1,
+html.a11y-dyslexic h2,
+html.a11y-dyslexic h3,
+html.a11y-dyslexic h4,
+html.a11y-dyslexic h5,
+html.a11y-dyslexic h6 {
+  font-family: Arial, Verdana, sans-serif !important;
+}
+
+/* Larger text */
+/* Homepage post list accessibility scaling */
+html.a11y-large-text .post-list-meta {
+  font-size: 2.00rem !important;
+}
+
+html.a11y-large-text .post-list-title {
+  font-size: 1.75rem !important;
+  line-height: 1.28 !important;
+}
+
+html.a11y-large-text .post-list-excerpt {
+  font-size: 1.5rem !important;
+  line-height: 1.8 !important;
+}
+
+html.a11y-large-text p,
+html.a11y-large-text li,
+html.a11y-large-text a,
+html.a11y-large-text span,
+html.a11y-large-text div {
+  font-size: 2.25rem !important;
+}
+
+/* Extra spacing */
+html.a11y-extra-spacing body,
+html.a11y-extra-spacing p,
+html.a11y-extra-spacing li,
+html.a11y-extra-spacing h1,
+html.a11y-extra-spacing h2,
+html.a11y-extra-spacing h3,
+html.a11y-extra-spacing h4,
+html.a11y-extra-spacing h5,
+html.a11y-extra-spacing h6,
+html.a11y-extra-spacing a,
+html.a11y-extra-spacing span,
+html.a11y-extra-spacing div {
+  line-height: 1.95 !important;
+  letter-spacing: 0.05em !important;
+  word-spacing: 0.05em !important;
+}
+
+/* High contrast */
+html.a11y-high-contrast {
+  --background: 0 0% 100%;
+  --foreground: 0 0% 6%;
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 6%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 6%;
+  --secondary: 0 0% 94%;
+  --secondary-foreground: 0 0% 6%;
+  --muted: 0 0% 94%;
+  --muted-foreground: 0 0% 22%;
+  --border: 0 0% 30%;
+  --input: 0 0% 30%;
+  --ring: 11 66% 50%;
+}
+
+html.dark.a11y-high-contrast {
+  --background: 0 0% 3%;
+  --foreground: 0 0% 98%;
+  --card: 0 0% 5%;
+  --card-foreground: 0 0% 98%;
+  --popover: 0 0% 5%;
+  --popover-foreground: 0 0% 98%;
+  --secondary: 0 0% 12%;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 0 0% 12%;
+  --muted-foreground: 0 0% 82%;
+  --border: 0 0% 45%;
+  --input: 0 0% 45%;
+  --ring: 11 66% 62%;
+}
+
+html.a11y-high-contrast body {
+  filter: none !important;
+}
+
+html.a11y-high-contrast .text-muted-foreground {
+  opacity: 1 !important;
+  color: hsl(var(--muted-foreground)) !important;
+}
+
+html.a11y-high-contrast a {
+  text-decoration-thickness: 2px !important;
+  text-underline-offset: 0.18em !important;
+}
+
+html.a11y-high-contrast button,
+html.a11y-high-contrast [role="button"],
+html.a11y-high-contrast input,
+html.a11y-high-contrast textarea,
+html.a11y-high-contrast select {
+  box-shadow: none !important;
+  border-width: 1.5px !important;
+}
+
+html.a11y-high-contrast .border,
+html.a11y-high-contrast [class*="border-"] {
+  border-color: hsl(var(--border)) !important;
+}
+
+/* Reduce motion */
+html.a11y-reduce-motion *,
+html.a11y-reduce-motion *::before,
+html.a11y-reduce-motion *::after {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+}
